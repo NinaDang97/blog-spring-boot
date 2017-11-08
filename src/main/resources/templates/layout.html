@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="site-header">
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" th:href="@{css/semantic.min.css}" />
+    <link type="text/css" rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css}" />
+    <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
+    <link type="text/css" rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Spectral+SC}" />
+    
+</head>
+
+<body>
+	<div class="ui container">
+		<header th:fragment="site-nav">
+			<div class="ui inverted menu" style="margin: 0px">
+	                <div class="header item">
+						<i class="code icon big"></i>Blog Site
+					</div>
+					<a th:href="@{/}" class="item"><i class="home icon"></i>Home</a>
+					<a th:href="@{/new}" class="item"><i class="add circle icon"></i>Create Post</a>
+					<div class="right menu">
+						<a th:href="@{/}" class="item"><i class="sign in icon"></i>Log In</a>
+						<a th:href="@{/}" class="item"><i class="add user icon"></i>Sign Up</a>
+						<a th:href="@{/}" class="item"><i class="sign out icon"></i>Log Out</a>
+					</div>					
+			</div>
+		</header>
+	</div>
+
+	
+	<footer class="footer" th:fragment="site-footer">
+		<p>Khanh Dang, 11/2017</p>
+	</footer>
+
+</body>
+
+</html>

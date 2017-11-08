@@ -1,0 +1,26 @@
+.container{
+	margin-top: 20px;
+}
+
+.big{
+	font-size: 2em;
+}
+
+.ui.items>.item>.content a{
+	margin-top: 30px;
+}
+
+.ui.inverted.menu .item, .ui.inverted.menu .item>a:not(.ui){
+	font-family: 'Spectral SC', serif;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  text-align: center;
+}

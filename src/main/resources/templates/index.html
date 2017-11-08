@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout::site-header">
+    <meta charset="UTF-8" />
+    <title>Blog Site</title>
+</head>
+
+<body>
+	<header th:replace="layout::site-nav" />
+	
+	<div class="ui main text container">
+	    <div class="ui huge header">Blog List</div>
+	        <div class="ui top attached segment" th:each="post : ${post}">
+	            <div class="ui divided items">
+	                    <div class="item">
+	                        <div class="ui small image">
+	                          <img class="ui centered rounded image" th:src="${post.image}" />
+	                        </div>
+	                        <div class="content">
+	                            <div class="header" th:text="${post.title}">Post Title</div>
+	                            <div class="meta">
+	                                <span th:text="${post.date}"></span>
+	                            </div>
+	                            <div class="description">
+	                               <span th:text="${#strings.substring(post.body, 0, 20)}"></span>
+	                               <span>...</span>
+	                            </div>
+	                      		<a class="ui right labeled icon button" th:href="@{/{id}(id=${post.id})}"><i class="right arrow icon"></i>Read More</a>
+	                        </div>
+	                    </div>
+	                    
+	            </div>
+	        </div>
+    </div>
+
+    
+    <footer th:replace="layout::site-footer" />
+</body>
+
+</html>

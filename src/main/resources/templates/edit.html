@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::site-header">
+    <meta charset="UTF-8" />
+    <title>Add Post</title>
+</head>
+<body>
+	<header th:replace="layout::site-nav" />
+	
+	<div class="ui main text container segment">
+	    <h2 class="ui center aligned icon header">
+	      <i class="circular users icon"></i>
+	      Edit Post <br /> <span th:text="${post.title}"></span>
+	    </h2>
+	    
+	    <form class="ui form" th:object="${post}" th:action="@{../save}" action="#" method="post">	
+				 	<!-- NOTE: ID should be added otherwise new post will be added -->
+				 	<input type="hidden" th:field="*{id}" />
+				 	<div class="field">			
+						<input type="text" id="title" th:field="*{title}" placeholder="Title" value="${post.title}"/>
+					</div>
+					 <div class="field">	
+						<input type="text" id="image" th:field="*{image}" placeholder="Image URL" value="${post.image}" />
+					</div>
+					 <div class="field">
+						<textarea id="body" th:field="*{body}" placeholder="Write your post here">
+							<span th:text = "${post.title}"></span>
+						</textarea>
+					</div>
+					
+					<button class="ui inverted big violet button">Update Edit</button>
+				</form>
+		    
+	</div>
+	
+	<footer th:replace="layout::site-footer" />
+</body>
+</html>
