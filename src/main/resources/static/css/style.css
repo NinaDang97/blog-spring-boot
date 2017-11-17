@@ -1,8 +1,23 @@
+body{
+	background-color: aliceblue;
+}
+
+h3{
+	padding: 0 20px;
+}
+
+.ui.menu:not(.vertical) .right.item, .ui.menu:not(.vertical) .right.menu{
+	margin-top: 7px;
+}
+
 .container{
 	margin-top: 20px;
 }
 
-.big{
+.ui.inverted.segment, .ui.primary.inverted.segment{
+	height: 60%;
+	background-image: url("http://blog.s-i-p.be/wp-content/uploads/2015/12/iStock_000047622152_Full.jpg");
+	background-size: 100% 100%;
 	font-size: 2em;
 }
 
@@ -14,8 +29,35 @@
 	font-family: 'Spectral SC', serif;
 }
 
+.ui.text.container.transparent{
+	padding-top: 20px;
+	background-color: black;
+	background: rgba(0, 0, 0, 0.5);
+	height: 50%;
+	position: relative;
+	top: 15%;
+}
+
+.error{
+	color: red;
+}
+
+.ui.text.container.short.top{
+	position: relative;
+	top: 20%;
+}
+
+.ui.text.container.short{
+	padding-bottom: 20px;
+	margin-bottom: 70px;
+}
+
+.ui.text.container{
+	padding-bottom: 100px;
+}
+
 .footer {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;

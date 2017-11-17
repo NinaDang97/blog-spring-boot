@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::site-header">
+    <meta charset="UTF-8" />
+    <title>Add Post</title>
+</head>
+<body>
+	
+<div class="ui main text container segment short top">
+    <h2 class="ui center aligned icon header">
+      <i class="user circle outline"></i>
+      SIGNUP FORM
+    </h2>
+	    <div>
+			<form class="ui form" th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">	
+			 	<div class="field">
+			 		<label>Username: </label>
+			 		<div class="ui left icon input">
+			 			<i class="user icon"></i>			
+						<input type="text" th:field="*{username}" />
+					</div>
+					<p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
+				</div>
+				 <div class="field">
+				 	<label>Password: </label>	
+				 	<div class="ui left icon input">
+			 			<i class="lock icon"></i> 
+						<input type="password" th:field="*{password}" />
+					</div>
+					<p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+				</div>
+				<div class="field">
+				 	<label>Re-type Password: </label>
+				 	<div class="ui left icon input">
+			 			<i class="lock icon"></i> 	
+						<input type="password" th:field="*{passwordCheck}" />
+					</div>
+					<p class="error" th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
+				</div>	
+				
+				<button class="ui fluid inverted large violet button">Signup!</button>
+			</form>
+			<div class="ui message">
+					Already have your account? <a th:href="@{/login}">Log In</a>
+			</div>
+		</div>
+</div>
+</body>
+</html>

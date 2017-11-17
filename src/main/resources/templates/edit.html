@@ -14,25 +14,29 @@
 	    </h2>
 	    
 	    <form class="ui form" th:object="${post}" th:action="@{../save}" action="#" method="post">	
-				 	<!-- NOTE: ID should be added otherwise new post will be added -->
+	    			<!-- NOTE: ID should be added otherwise new post will be added -->
 				 	<input type="hidden" th:field="*{id}" />
+				 	<div class="field">
+				 		<label for="stylelist">BLOG STYLE</label>
+				 		<select id="stylelist" th:field="*{style.styleid}">
+			 				<option th:each="style: ${styles}" th:value="${style.styleid}" th:text="${style.name}"></option>
+			 			</select>
+			 		</div>		
 				 	<div class="field">			
-						<input type="text" id="title" th:field="*{title}" placeholder="Title" value="${post.title}"/>
+						<input type="text" id="title" th:field="*{title}" placeholder="Title" />
 					</div>
 					 <div class="field">	
-						<input type="text" id="image" th:field="*{image}" placeholder="Image URL" value="${post.image}" />
+						<input type="text" id="image" th:field="*{image}" placeholder="Image URL" />
 					</div>
 					 <div class="field">
 						<textarea id="body" th:field="*{body}" placeholder="Write your post here">
-							<span th:text = "${post.title}"></span>
 						</textarea>
 					</div>
 					
-					<button class="ui inverted big violet button">Update Edit</button>
+					<button class="ui inverted big violet button">Update</button>
 				</form>
 		    
 	</div>
 	
-	<footer th:replace="layout::site-footer" />
 </body>
 </html>

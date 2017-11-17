@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::site-header">
+    <meta charset="UTF-8" />
+    <title>Add Post</title>
+</head>
+<body>
+<div class="ui inverted vertical masthead center aligned segment">
+	<div class="ui text container transparent">
+      <h1 class="ui inverted header">
+       	WELCOME TO BLOG SITE
+      </h1>
+      <h3>This is a closed community where a group of people shares thoughts and ideas about surrounding world. Users who accepted to register our blog must not copy/share our posts in any case.</h3>
+      
+    </div>
+	
+</div>
+
+<div class="ui main text container segment short">
+    <h2 class="ui center aligned icon header">
+      <i class="user icon"></i>
+      LOGIN FORM
+    </h2>
+			<form class="ui form" th:action="@{/login}" action="#" method="post">	
+			 	<div class="field">
+			 		<label>Username: </label>
+			 		<div class="ui left icon input">
+			 			 <i class="user icon"></i> 					
+						<input type="text" name="username" />
+					</div>
+				</div>
+				 <div class="field">
+				 	<label>Password: </label>
+				 	<div class="ui left icon input">
+				 		<i class="lock icon"></i> 		
+						<input type="password" name="password" />
+					</div>
+				</div>	
+				
+				<button class="ui fluid inverted large violet button">Login</button>
+			</form>
+			<div class="error" th:if="${param.error}">
+				Invalid username or password!
+			</div>
+			<div th:if="${param.logout}">
+				You have been logged out.
+			</div>
+		
+			<div class="ui message">
+					New to us? <a th:href="@{/signup}">Sign Up</a>
+			</div>
+</div>
+<footer th:replace="layout::site-footer" />
+</body>
+</html>

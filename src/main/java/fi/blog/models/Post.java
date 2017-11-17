@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Post {
@@ -17,15 +21,21 @@ public class Post {
 	private String body;
 	private Date date = new Date();
 	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "styleid")
+	private Style style;
+	
 	public Post(){
 		
 	}
 
-	public Post(String title, String image, String body) {
+	public Post(String title, String image, String body, Style style) {
 		super();
 		this.title = title;
 		this.image = image;
 		this.body = body;
+		this.style = style;
 	}
 
 	public Long getId() {
@@ -68,9 +78,20 @@ public class Post {
 		this.date = date;
 	}
 
+	public Style getStyle() {
+		return style;
+	}
+
+	public void setStyle(Style style) {
+		this.style = style;
+	}
+
 	@Override
 	public String toString() {
-		return "Post [title=" + title + ", image=" + image + ", body=" + body + "]";
-	}	
+		return "Post [id=" + id + ", title=" + title + ", image=" + image + ", body=" + body + ", date=" + date
+				+ ", style=" + style + "]";
+	}
+
+	
 	
 }

@@ -14,6 +14,12 @@
     </h2>
 	    <div>
 			<form class="ui form" th:object="${post}" th:action="@{save}" action="#" method="post">	
+			 	<div class="field">
+			 		<label for="stylelist">BLOG STYLE</label>
+			 		<select id="stylelist" th:field="*{style.styleid}">
+			 			<option th:each="style: ${styles}" th:value="${style.styleid}" th:text="${style.name}"></option>
+			 		</select>
+			 	</div>
 			 	<div class="field">			
 					<input type="text" id="title" th:field="*{title}" placeholder="Title"/>
 				</div>
@@ -23,12 +29,11 @@
 				 <div class="field">
 					<textarea id="body" th:field="*{body}" placeholder="Write your post here">
 					</textarea>
-				</div>
+				</div>		
 				
 				<button class="ui inverted big violet button">Submit</button>
 			</form>
 		</div>
 </div>
-	
 </body>
 </html>

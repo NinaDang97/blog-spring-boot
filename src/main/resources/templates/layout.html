@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head th:fragment="site-header">
     <meta charset="UTF-8" />
@@ -18,11 +18,13 @@
 						<i class="code icon big"></i>Blog Site
 					</div>
 					<a th:href="@{/}" class="item"><i class="home icon"></i>Home</a>
-					<a th:href="@{/new}" class="item"><i class="add circle icon"></i>Create Post</a>
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/new}" class="item"><i class="add circle icon"></i>Create Post</a>
+				
 					<div class="right menu">
-						<a th:href="@{/}" class="item"><i class="sign in icon"></i>Log In</a>
-						<a th:href="@{/}" class="item"><i class="add user icon"></i>Sign Up</a>
-						<a th:href="@{/}" class="item"><i class="sign out icon"></i>Log Out</a>
+						<a href="#" class="item lowercase" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] !</a>
+						<form th:action="@{/logout}" method="POST">
+							<input class="ui inverted basic button" type="submit" value="Logout" />
+						</form>
 					</div>					
 			</div>
 		</header>
