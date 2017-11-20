@@ -2,6 +2,7 @@ package fi.blog.models;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,8 @@ public class Post {
 	private Long id;
 	private String title;
 	private String image;
+	
+	@Column(length = 10000)
 	private String body;
 	private Date date = new Date();
 	

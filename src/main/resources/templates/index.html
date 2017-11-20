@@ -24,7 +24,7 @@
 	                            </div>
 	                            <div class="description">
 	                            	Style: <strong><span th:text="${post.style.name}">Blog Style</span></strong><br />
-	                               <span th:text="${#strings.substring(post.body, 0, 20)}"></span>
+	                               <span th:text="${#strings.substring(post.body, 0, 50)}"></span>
 	                               <span>...</span><a th:href="@{/{id}(id=${post.id})}">[Read More]</a>
 	                            </div>	                      		
 	                        </div>
