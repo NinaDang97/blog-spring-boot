@@ -42,11 +42,6 @@ h3{
 	color: red;
 }
 
-.ui.text.container.short.top{
-	position: relative;
-	top: 20%;
-}
-
 .ui.text.container.short{
 	padding-bottom: 20px;
 	margin-bottom: 70px;
@@ -54,6 +49,10 @@ h3{
 
 .ui.text.container{
 	padding-bottom: 100px;
+}
+
+.material-icons.smaller{
+	font-size: 17px;
 }
 
 .footer {

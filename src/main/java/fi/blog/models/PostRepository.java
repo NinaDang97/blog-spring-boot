@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<Post, Long>{
 	List<Post> findAll();
-	List<Post> findById(Long id);
+	List<Post> findByTitle(String title);
 //	List<Post> findLatest5();
 //	Post findById(Long id);
 //	Post create(Post post);

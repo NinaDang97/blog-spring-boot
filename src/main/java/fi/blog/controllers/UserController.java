@@ -3,11 +3,13 @@ package fi.blog.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,6 +40,10 @@ public class UserController {
 				newUser.setPasswordHash(hashPwd);
 				newUser.setUsername(signupForm.getUsername());
 				newUser.setRole("USER");
+				newUser.setFirstname(signupForm.getFirstname());
+				newUser.setLastname(signupForm.getLastname());
+				newUser.setPhone(signupForm.getPhone());
+				newUser.setEmail(signupForm.getEmail());
 				if(userRepository.findByUsername(signupForm.getUsername()) == null){
 					userRepository.save(newUser);
 				}
@@ -53,5 +59,42 @@ public class UserController {
 		}
 		return "redirect:/login";
 	}
+	
+		//GET ALL USERS
+		@PreAuthorize("hasAuthority('ADMIN')")
+		@RequestMapping(value="/users", method = RequestMethod.GET)
+		public String getAllUsers(Model model){
+			model.addAttribute("user", userRepository.findAll());
+			return "users";
+		}
+		
+		//=======================
+		//EDIT/REMOVE SPECIFIC USER
+		//=====================
+		//Show edit form
+		@PreAuthorize("hasAuthority('ADMIN')")
+		@RequestMapping(value="/users/{id}/edit", method = RequestMethod.GET)
+		public String userEdit(@PathVariable("id") Long userId, Model model){
+			model.addAttribute("user", userRepository.findOne(userId));
+			return "userEdit";
+		}
+		
+		//Save edit and return to /users page
+		
+		@PreAuthorize("hasAuthority('ADMIN')")
+		@RequestMapping(value="/users/save", method = RequestMethod.POST)
+		public String userSave(User user){
+			userRepository.save(user);
+			return "redirect:/users";
+		}
+		
+		//Delete user
+		@PreAuthorize("hasAuthority('ADMIN')")
+		@RequestMapping(value="/users/{id}/delete", method = RequestMethod.GET)
+		public String userDelete(@PathVariable("id") Long userId, Model model){
+			userRepository.delete(userId);
+			return "redirect:/users";
+		}
+		
 }
 

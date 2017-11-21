@@ -7,6 +7,8 @@
     <link type="text/css" rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css}" />
     <link type="text/css" rel="stylesheet" th:href="@{css/style.css}" />
     <link type="text/css" rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Spectral+SC}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
     
 </head>
 
@@ -19,7 +21,8 @@
 					</div>
 					<a th:href="@{/}" class="item"><i class="home icon"></i>Home</a>
 					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/new}" class="item"><i class="add circle icon"></i>Create Post</a>
-				
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}" class="item"><i class="users icon"></i>All Users</a>
+										
 					<div class="right menu">
 						<a href="#" class="item lowercase" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] !</a>
 						<form th:action="@{/logout}" method="POST">

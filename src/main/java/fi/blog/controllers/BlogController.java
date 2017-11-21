@@ -72,16 +72,17 @@ public class BlogController {
 		model.addAttribute("styles", styleRepository.findAll());
 		return "edit";
 	}
-	
+
 	//=====================
-	//RESTful SERVICE
+	//RESTful SERVICES
 	//====================
-	// Get all post
+	// Get all posts
 	@RequestMapping(value="/posts", method = RequestMethod.GET)
 	public @ResponseBody List<Post> postListRest(){
 		return (List<Post>) postRepository.findAll();
 	}
 	
+	//Get all styles
 	@RequestMapping(value="/styles", method = RequestMethod.GET)
 	public @ResponseBody List<Style> styleListRest(){
 		return (List<Style>) styleRepository.findAll();
