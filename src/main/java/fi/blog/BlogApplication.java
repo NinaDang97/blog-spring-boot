@@ -26,8 +26,8 @@ public class BlogApplication {
 	public CommandLineRunner blogDemo(PostRepository postRepository, StyleRepository styleRepository, UserRepository userRepository){
 		return (args) -> {
 			log.info("save posts");
-			styleRepository.save(new Style("Animal"));
-			styleRepository.save(new Style("Sport"));
+			styleRepository.save(new Style("Beauty"));
+			styleRepository.save(new Style("Economy"));			
 			styleRepository.save(new Style("Technology"));
 			styleRepository.save(new Style("Travel"));
 			styleRepository.save(new Style("Universe and Geography"));

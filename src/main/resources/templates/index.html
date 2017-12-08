@@ -20,11 +20,11 @@
 	                        <div class="content">
 	                            <div class="header" th:text="${post.title}">Post Title</div>
 	                            <div class="meta">
-	                                <span th:text="${post.date}">Post Date</span>
+	                                <span th:text="${#dates.format(post.date,'dd-MM-yyyy')}">Post Date</span>
 	                            </div>
 	                            <div class="description">
 	                            	Style: <strong><span th:text="${post.style.name}">Blog Style</span></strong><br />
-	                               <span th:text="${#strings.substring(post.body, 0, 50)}"></span>
+	                               <span th:text="${#strings.substring(post.body, 0, 100)}"></span>
 	                               <span>...</span><a th:href="@{/{id}(id=${post.id})}">[Read More]</a>
 	                            </div>	                      		
 	                        </div>

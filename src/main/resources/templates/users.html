@@ -26,7 +26,8 @@
 			      <td th:text="${user.email}">Email</td>
 			      <td th:text="${user.username}">Username</td>
 			      <td th:text="${user.role}">Role</td>
-			      <td><a th:href="@{/users/{id}/delete(id=${user.id})}"><i class="material-icons smaller">delete</i>Remove</a></td>
+			      <td><a th:href="@{/users/{id}/delete(id=${user.id})}"><i class="material-icons smaller">delete</i>Remove</a><br />
+			      <a th:href="@{/users/{id}/edit(id=${user.id})}"><i class="material-icons smaller">edit</i>Edit</a></td>
 			    </tr>
 			</tbody>
 		</table>

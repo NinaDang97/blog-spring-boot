@@ -34,7 +34,7 @@
 				</div>
 				<div class="field">
 			 		<label>Email Address: </label>		
-					<input type="text" th:field="*{email}" placeholder="Email Address"/>
+					<input type="email" th:field="*{email}" placeholder="Email Address"/>
 					<p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>						
 				</div>
 			<h4 class="ui dividing header">Please Sign Up</h4>
@@ -68,7 +68,18 @@
 			<div class="ui message">
 					Already have your account? <a th:href="@{/login}">Log In</a>
 			</div>
+			<div class="ui info message">
+			  <div class="header">
+			    You have question or want further information? Why not contact us?
+			  </div>
+			  <p>
+			  Admin: Khanh Dang<br />
+			  Phone: 0468450492<br />
+			  Email: khanh.2dbt@gmail.com<br />
+			  </p>
+			</div>
 		</div>
 </div>
+<footer th:replace="layout::site-footer" />
 </body>
 </html>

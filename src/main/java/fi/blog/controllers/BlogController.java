@@ -23,23 +23,27 @@ public class BlogController {
 	@Autowired
 	private StyleRepository styleRepository;
 	
+	//Login Route
 	@RequestMapping(value = "/login")
 	public String login(){
 		return "login";
 	}
 	
+	//Post Index Route
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {	
 		model.addAttribute("post", postRepository.findAll());
 		return "index";
 	}
 	
+	//Specific post with id Route
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String show(@PathVariable("id") Long postId, Model model) {	
 		model.addAttribute("post", postRepository.findOne(postId));
 		return "show";
 	}
 	
+	//Create new post Form Route
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newPost(Model model){
@@ -71,8 +75,8 @@ public class BlogController {
 		model.addAttribute("post", postRepository.findOne(postId));
 		model.addAttribute("styles", styleRepository.findAll());
 		return "edit";
-	}
-
+	}	
+	
 	//=====================
 	//RESTful SERVICES
 	//====================

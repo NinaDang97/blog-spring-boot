@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::site-header">
+    <meta charset="UTF-8" />
+    <title>Add Post</title>
+</head>
+<body>
+	
+<div class="ui main text container segment short">
+    <h2 class="ui center aligned icon header">
+      EDIT USER
+    </h2>
+	    <div>
+			<form class="ui form" th:object="${user}" th:action="@{../save}" action="#" method="post">
+				<h4 class="ui dividing header">Personal Information</h4>
+				<!-- NOTE: ID should be added otherwise new post will be added -->
+				<input type="hidden" th:field="*{id}" />	
+			 	<div class="field">
+			 		<div class="field">
+			 			<input type="text" th:field="*{id}" readonly="" />
+			 		</div>
+			 		<div class="field">
+			 			<input type="text" th:field="*{role}" readonly="" />
+			 		</div>
+			 		<div class="field">
+			 			<input type="text" th:field="*{username}" readonly="" />
+			 		</div>
+			 		<label>Name: </label>
+			 		<div class="two fields">
+			 			<div class="field">	
+							<input type="text" th:field="*{firstname}" placeholder="First Name" />					
+				 		</div>
+				 		<div class="field">			
+							<input type="text" th:field="*{lastname}" placeholder="Last Name" />
+						</div>					
+					</div>
+				</div>
+				<div class="field">
+			 		<label>Phone Number: </label>		
+					<input type="text" th:field="*{phone}" placeholder="Phone Number"/>					
+				</div>
+				<div class="field">
+			 		<label>Email Address: </label>		
+					<input type="email" th:field="*{email}" placeholder="Email Address"/>				
+				</div>					
+				<button class="ui fluid inverted large violet button">Edit User</button>
+			</form>
+		</div>
+</div>
+</body>
+</html>

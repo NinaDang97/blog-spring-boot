@@ -16,7 +16,7 @@
                 <img class="ui centered rounded image" th:src="${post.image}" />
             </div>
             <div class="content">
-                 <span th:text="${post.date}"></span>
+                 Date: <span th:text="${#dates.format(post.date,'dd-MM-yyyy')}"></span>
             </div>
             <div class="description">
                <p th:text="${post.body}">Full post content</p>

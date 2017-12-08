@@ -3,6 +3,8 @@
 <head th:replace="layout::site-header">
     <meta charset="UTF-8" />
     <title>Add Post</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 </head>
 <body>
 <div class="ui inverted vertical masthead center aligned segment">
@@ -39,17 +41,41 @@
 				
 				<button class="ui fluid inverted large violet button">Login</button>
 			</form>
-			<div class="error" th:if="${param.error}">
-				Invalid username or password!
+			<div class="ui negative message" th:if="${param.error}">
+			  <i class="close icon"></i>
+			  <div class="header">
+			   	Error Login
+			  </div>
+			  <p>Invalid username or password!
+			</p></div>
+			<div class="ui positive message" th:if="${param.logout}">
+			  <i class="close icon"></i>
+			  <p>You have been logged out.</p>
 			</div>
-			<div th:if="${param.logout}">
-				You have been logged out.
-			</div>
-		
 			<div class="ui message">
 					New to us? <a th:href="@{/signup}">Sign Up</a>
 			</div>
+			<div class="ui info message">
+			  <div class="header">
+			    You have question or want further information? Why not contact us?
+			  </div>
+			  <p>
+			  Admin: Khanh Dang<br />
+			  Phone: 0468450492<br />
+			  Email: khanh.2dbt@gmail.com<br />
+			  </p>
+			</div>
 </div>
 <footer th:replace="layout::site-footer" />
+ <script type="text/javascript">
+	     $('.message .close')
+	     .on('click', function() {
+	       $(this)
+	         .closest('.message')
+	         .transition('fade')
+	       ;
+	     })
+	   ;
+     </script> 
 </body>
 </html>
